@@ -1,21 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import MainStackNavigator from "./src/navigation/MainStackNavigator";
+import { useState } from "react";
+import SomeContext from "./someContext";
+// import Footer from "./components/Footer";
 
-export default function App() {
+function App() {
+  const [someValue, setSomeValue] = useState("Prov");
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SomeContext.Provider value={{ someValue, setSomeValue }}>
+      <MainStackNavigator />
+    </SomeContext.Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
